@@ -1,6 +1,6 @@
 package org.example;
 
-public class Main {
+public class ConversorApp {
     static void main() {
         System.out.println("Aqui empieza el proyecto!!");
     }
