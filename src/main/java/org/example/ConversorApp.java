@@ -8,6 +8,11 @@ import com.google.gson.Gson;
 
 public class ConversorApp {
 
+    // Metodo modular para realizar la conversión
+    public static double convertirMoneda(double cantidad, double tasaDeCambio) {
+        return cantidad * tasaDeCambio;
+    }
+
     static void main() {
         // 1. Define la URL exacta que usaste en Postman (reemplaza TU_CLAVE_API)
         String direccion = "https://v6.exchangerate-api.com/v6/f0c8c87f20abd145afc0f84e/latest/USD";
@@ -40,9 +45,16 @@ public class ConversorApp {
             double tasaCOP = misTasas.conversion_rates().get("COP");
             double tasaBRL = misTasas.conversion_rates().get("BRL");
 
-            // 4. Mostramos los resultados en crudo para verificar
-            System.out.println("1 USD equivale a: " + tasaCOP + " COP");
-            System.out.println("1 USD equivale a: " + tasaBRL + " BRL");
+            // Simulamos un valor ingresado por el usuario
+            double cantidadAConvertir = 50.0;
+
+            // Llamamos a nuestro nuevo metodo para hacer los cálculos
+            double resultadoCOP = convertirMoneda(cantidadAConvertir, tasaCOP);
+            double resultadoBRL = convertirMoneda(cantidadAConvertir, tasaBRL);
+
+            // Mostramos los resultados finales
+            System.out.println(cantidadAConvertir + " USD equivalen a " + resultadoCOP + " COP");
+            System.out.println(cantidadAConvertir + " USD equivalen a " + resultadoBRL + " BRL");
 
         } catch (Exception e) {
             System.out.println("Ocurrió un error al realizar la petición: " + e.getMessage());
